@@ -1,13 +1,8 @@
-public class Gerente{
- private int ID;
- private String nome;
- private double salario, previdencia, adicional;
-
+public class Gerente extends Funcionario{
+ private double previdencia, adicional;
  public Gerente(int ID, String nome, double salario, double adicional){
- this.ID = ID;
- this.nome = nome;
- this.salario= salario;
- this.previdencia=0.07;
+  super(ID, nome, salario, "Gerente");
+  this.previdencia=0.07;
  // adicional caso o funcionário seja por exemplo chefe.
  this.adicional = adicional;
  }
@@ -16,6 +11,6 @@ public class Gerente{
  }
  public double getSalario(){
  // Calcula o salário líquido
- return(salario*((1- this.previdencia)+ this.adicional));
+ return(getSalarioFunc()*((1- this.previdencia)+ this.adicional));
  }
 }

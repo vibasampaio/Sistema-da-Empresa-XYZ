@@ -1,9 +1,14 @@
 import java.util.Scanner;
 import java.util.UUID;
+import java.util.ArrayList;
+
 class Main {
   
   public static void main(String[] args) {
-    Funcionario funcionario;
+    Secretaria secretaria;
+    Estagiario estag;
+    Presidente presidente;
+    Gerente gerente;
     Empresa vns;
     int ID = 0;
     String opcaoMetodo = "";
@@ -40,57 +45,65 @@ class Main {
           switch(cargos[opcao-1])
           {
             case "Estagiário":
-              System.out.println("Nome Estagiário: ");
+              System.out.println("\nNome Estagiário: ");
               nome = nomeScan.nextLine();
-              System.out.println("Salário Estagiário: ");
+              System.out.println("\nSalário Estagiário: ");
               salario = salarioScan.nextDouble();
+              estag = new Estagiario(ID, nome, salario, 50.0);
+              vns.adicionarFuncionario(estag);
               
             break;
             case "Gerente":
-              System.out.println("Nome Gerente: ");
+              System.out.println("\nNome Gerente: ");
               nome = nomeScan.nextLine();
-              System.out.println("Salário Gerente: ");
+              System.out.println("\nSalário Gerente: ");
               salario = salarioScan.nextDouble();
+              gerente = new Gerente(ID, nome, salario, 10.0);
+              vns.adicionarFuncionario(gerente);
             
             break;
             case "Presidente":
-              System.out.println("Nome Presidente: ");
+              System.out.println("\nNome Presidente: ");
               nome = nomeScan.nextLine();
-              System.out.println("Salário Presidente: ");
+              System.out.println("\nSalário Presidente: ");
               salario = salarioScan.nextDouble();
+              presidente = new Presidente(ID, nome, salario);
+              vns.adicionarFuncionario(presidente);
 
             break;
             case "Secretária":
-              System.out.println("Nome Secretária: ");
+              System.out.println("\nNome Secretária: ");
               nome = nomeScan.nextLine();
-              System.out.println("Salário Secretária: ");
+              System.out.println("\nSalário Secretária: ");
               salario = salarioScan.nextDouble();
+              secretaria = new Secretaria(ID, nome, salario);
+              vns.adicionarFuncionario(secretaria);
+
             
             break;
           }
-          funcionario = new Funcionario(ID, nome, salario, cargos[opcao-1]);
-          vns.adicionarFuncionario(funcionario);
-          System.out.printf("Usuário adicionado ID: %d\n", ID);
+          
+          System.out.printf("\nUsuário adicionado ID: %d\n", ID);
           vns.listarFuncionarios(); 
         break;
         case "2":
-        System.out.println("Digite o id do funcionario que deseja calcular o pagamento");
+        System.out.println("\nDigite o id do funcionario que deseja calcular o pagamento");
         idFuncionario = IdFuncionarioScan.nextInt();
           totalPagamento = vns.calcularPagamento(idFuncionario);
-          System.out.printf("Salário %f \n", totalPagamento);
+          System.out.printf("\nSalário %.2f \n", totalPagamento);
         //Java code
         break;
         case "3":
-        System.out.println("Digite um valor entre 0.0 e 1.0, que será usado como calculo da porcentagem do adicional do salário");
+        System.out.println("\nDigite um valor entre 0.0 e 1.0, que será usado como calculo da porcentagem do adicional do salário\n");
         double porcentagemAdicional;
         porcentagemAdicional = porcetagem.nextDouble();
-        vns.adicionalFuncionarios();
+        vns.adicionalFuncionarios(porcentagemAdicional);
                
 
         // 
         break;
         case "4":
-        vns.listarFuncionarios();
+        vns.toString();
         // 
         break;
         case "5":

@@ -1,17 +1,12 @@
-public class Secretaria{
- private int ID;
- private String nome;
- private double salario;
+public class Secretaria extends Funcionario{
  private double previdencia;
  public Secretaria(int ID, String nome, double salario){
- this.ID = ID;
- this.nome = nome;
- this.salario = salario;
+  super(ID, nome, salario, "Secretaria");
  // Desconto fixo de um sistema de previdência da empresa
  this.previdencia=0.05;
  }
  public double getSalario (){
  // Calcula o salário líquido
- return(salario*(1-previdencia));
+ return(getSalarioFunc()*(1-previdencia));
  }
 }

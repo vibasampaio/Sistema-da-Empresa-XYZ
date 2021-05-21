@@ -5,13 +5,11 @@ public class Empresa {
   String nomeEmpresa;
   ArrayList<Funcionario> funcionarios = new ArrayList();
   Funcionario funcionario;
-  Presidente presidente;
-  Gerente gerente;
+  
   public Empresa(String nomeEmpresa){
     this.nomeEmpresa = nomeEmpresa;
   }
   public void adicionarFuncionario(Funcionario funcionario){
-    gerente = new Gerente(funcionario.getId(),funcionario.getNome(), funcionario.getSalario(), 0.0);
     this.funcionarios.add(funcionario);
   }
   
@@ -19,16 +17,27 @@ public class Empresa {
     return this.funcionarios.get(id-1).getSalario();
   }
 
-  public void adicionalFuncionarios(){
+  public String toString(){
+    Iterator<Funcionario> iterator = funcionarios.iterator();
+    String stringSaida = "";
+    while (iterator.hasNext()) {
+      Funcionario funcionario = iterator.next();
+      
+      System.out.printf("\nID %d- Nome: %s - Salario: R$ %.2f\n",funcionario.getId(), funcionario.getNome(), funcionario.getSalario());
+      stringSaida = stringSaida.concat(String.format("\nPosição %d- %s - %f\n", funcionario.getId(), funcionario.getNome(), funcionario.getSalario()));
+      
+    }
+    return stringSaida;
+  }
+
+  public void adicionalFuncionarios(double valorAdicional){
     Iterator<Funcionario> iterator = funcionarios.iterator();
     
     while (iterator.hasNext()) {
       funcionario = iterator.next();
       System.out.printf("\n Funcionario %s - %s\n", funcionario.getNome(), funcionario.getCargo());
-      if(funcionario.getCargo() == "Presidente"){
-
-      } if (funcionario.getCargo() == "Gerente"){
-
+      if(funcionario.getCargo() == "Presidente" || funcionario.getCargo() == "Gerente"){
+        funcionario.alteraAdicional(valorAdicional);
       }
     }
   }

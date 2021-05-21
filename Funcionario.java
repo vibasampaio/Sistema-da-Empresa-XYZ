@@ -11,6 +11,9 @@ public class Funcionario{
     this.cargo = cargo;
   }
 
+  public double getSalarioFunc(){
+    return(this.salario);
+  }
   public double getSalario(){
     return(this.salario);
   }
@@ -24,5 +27,8 @@ public class Funcionario{
   }
   public int getId(){
     return(this.ID);
+  }
+  public void alteraAdicional(double novo_percentual){
+    System.out.println("over");
   }
 }

@@ -1,3 +1,16 @@
+/*
+Entrega de trabalho
+Nós,
+Leonardo Lourenço Watanabe TIA:31947468
+Vinicius Nascimento Sampaio TIA:31933130
+declaramos que
+todas as respostas são fruto de nosso próprio trabalho,
+não copiamos respostas de colegas externos à equipe,
+não disponibilizamos nossas respostas para colegas externos à equipe e
+não realizamos quaisquer outras atividades desonestas para nos beneficiar
+ou prejudicar outros.
+*/
+
 import java.util.Scanner;
 import java.util.UUID;
 import java.util.ArrayList;
